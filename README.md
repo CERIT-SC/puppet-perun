@@ -1,7 +1,8 @@
 # Puppet Perun module
 
-This module installs Perun slave scripts and configures
-remote access to these management scripts from server.
+This module installs [Perun](http://perun.metacentrum.cz/) slave
+scripts and configures remote access to these management scripts
+from server.
 
 ### Requirements
 
