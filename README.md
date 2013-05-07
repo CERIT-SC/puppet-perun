@@ -14,6 +14,7 @@ Module has been tested on:
 Required modules:
 
 * yum (https://github.com/CERIT-SC/puppet-yum)
+* stdlib (https://github.com/puppetlabs/puppetlabs-stdlib)
 
 # Quick Start
 
