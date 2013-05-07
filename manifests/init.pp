@@ -8,7 +8,7 @@ class perun (
   $use_repo   = $perun::params::use_repo
 ) inherits perun::params {
 
-  if ! $ensure in [present,absent,latest] {
+  if ! ($ensure in [present,absent,latest]) {
     fail("Invalid ensure state: ${ensure}")
   }
 
