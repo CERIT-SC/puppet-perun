@@ -26,10 +26,10 @@ Full configuration options:
 
     class { 'perun':
       ensure     => present|absent|latest,    # ensure state
-	  user       => 'root',                   # local privileged user
-	  allow_from => 'foo.example.com',        # enabled remote Perun server name
-	  ssh_type   => 'ssh-rsa' or 'ssh-dss',   # SSH key type
-	  ssh_key    => '...',                    # SSH key
-	  use_repo   => false|true,               # include external repository
-	  packages   => [..],                     # list of packages for install
-	}
+      user       => 'root',                   # local privileged user
+      allow_from => 'foo.example.com',        # enabled remote Perun server name
+      ssh_type   => 'ssh-rsa' or 'ssh-dss',   # SSH key type
+      ssh_key    => '...',                    # SSH key
+      use_repo   => false|true,               # include external repository
+      packages   => [..],                     # list of packages for install
+    }

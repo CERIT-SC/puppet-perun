@@ -13,7 +13,7 @@ class perun::install (
 
   if size($packages)>0 {
     package { $packages:
-      ensure  => $ensure,
+      ensure => $ensure,
     }
   } else {
     warning('No Perun package(s) for installation')

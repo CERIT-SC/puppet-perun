@@ -7,7 +7,6 @@ class perun::config (
 ) {
   $_ensure = $ensure ? {
     latest    => present,
-    installed => present,
     default   => $ensure
   }
 

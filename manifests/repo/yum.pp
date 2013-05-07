@@ -4,9 +4,8 @@ class perun::repo::yum (
 ) inherits perun::params {
 
   $_ensure = $ensure ? {
-    latest    => present,
-    installed => present,
-    default   => $ensure
+    latest  => present,
+    default => $ensure
   }
 
   yum::gpgkey { $gpgkey:
