@@ -12,12 +12,6 @@ class perun (
     fail("Invalid ensure state: ${ensure}")
   }
 
-  class { 'perun::install':
-    ensure   => $ensure,
-    packages => $packages,
-    use_repo => $use_repo,
-  }
-
   class { 'perun::config':
     ensure     => $ensure,
     user       => $user,
@@ -26,8 +20,14 @@ class perun (
     ssh_type   => $ssh_type,
   }
 
+  class { 'perun::install':
+    ensure   => $ensure,
+    packages => $packages,
+    use_repo => $use_repo,
+  }
+
   anchor { 'perun::begin': ; }
-    -> Class['perun::install']
     -> Class['perun::config']
+    -> Class['perun::install']
     -> anchor { 'perun::end': ; }
 }
