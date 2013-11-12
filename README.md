@@ -9,7 +9,10 @@ from server.
 Module has been tested on:
 
 * Puppet 3.1
-* Debian 6.0 and RHEL/CentOS 6.4
+* OS:
+ * Debian 6
+ * RHEL/CentOS 6
+ * SLES/SLED 11 SP3
 
 Required modules:
 
