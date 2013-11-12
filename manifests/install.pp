@@ -5,9 +5,10 @@ class perun::install (
 ) {
   if ($use_repo == true) {
     case $::operatingsystem {
-      debian:         { } #TODO
-      redhat,centos:  { require perun::repo::yum }
-      default:        { fail("Unsupported OS: ${::operatingsystem}") }
+      debian:        { }
+      redhat,centos: { require perun::repo::yum }
+      sles,sled:     { require perun::repo::zypp }
+      default:       { fail("Unsupported OS: ${::operatingsystem}") }
     }
   }
 

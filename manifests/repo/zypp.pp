@@ -1,4 +1,4 @@
-class perun::repo::yum (
+class perun::repo::zypp (
   $ensure  = $perun::params::ensure,
   $baseurl = $perun::params::baseurl,
   $gpgkey  = $perun::params::gpgkey
@@ -14,12 +14,15 @@ class perun::repo::yum (
     source => 'puppet:///modules/perun/RPM-GPG-KEY-perunv3',
   }
 
-  yumrepo { 'perunv3':
-    enabled  => 1,
-    gpgcheck => 1,
-    descr    => 'Perun repository',
-    baseurl  => $baseurl,
-    gpgkey   => "file://${gpgkey}",
-    require  => Yum::Gpgkey[$gpgkey],
+  zypprepo { 'perunv3':
+    enabled      => 1,
+    gpgcheck     => 1,
+    descr        => 'Perun repository',
+    baseurl      => $baseurl,
+    gpgkey       => "file://${gpgkey}",
+    type         => 'rpm-md',
+    autorefresh  => 1,
+    keeppackages => 0,
+    require      => Yum::Gpgkey[$gpgkey],
   }
 }
