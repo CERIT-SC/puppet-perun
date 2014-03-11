@@ -6,11 +6,12 @@ class perun::params {
   $ensure = latest
   $use_repo = true
   $own_repo_class = ''
-  $perun_dir = '/opt/perun'
+  $perun_dir = '/opt/perun/bin'
 
   case $::operatingsystem {
     debian: {
       $packages = ['remctl-client','perun-slave','perun-slave-meta']
+      $service = 'perun_propagate'
       $baseurl = 'ftp://depot1.mc.cesnet.cz/'
       $apt_repos = 'main'
       $apt_pin = 490
@@ -18,12 +19,14 @@ class perun::params {
 
     redhat,centos: {
       $packages = ['perun-slave']
+      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perunv3'
     }
 
     sles,sled: {
       $packages = ['perun-slave']
+      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/RPM-GPG-KEY-perunv3'
     }

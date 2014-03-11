@@ -5,6 +5,7 @@ class perun (
   $ssh_key        = $perun::params::ssh_key,
   $ssh_type       = $perun::params::ssh_type,
   $packages       = $perun::params::packages,
+  $service        = $perun::params::service,
   $use_repo       = $perun::params::use_repo,
   $own_repo_class = $perun::params::own_repo_class
 ) inherits perun::params {
@@ -32,8 +33,13 @@ class perun (
     own_repo_class => $own_repo_class,
   }
 
+  class { 'perun::service':
+    service => $service,
+  }
+
   anchor { 'perun::begin': ; }
     -> Class['perun::config']
     -> Class['perun::install']
+    ~> Class['perun::service']
     -> anchor { 'perun::end': ; }
 }
