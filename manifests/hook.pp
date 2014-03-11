@@ -18,7 +18,8 @@ define perun::hook (
 
   file { "${perun::params::perun_dir}/${service}.d/${type}_${hookname}":
     ensure  => $_ensure,
-    content => $content,
+    content => "# This file is managed by Puppet!
+${content}",
     require => Class['perun::install'],
     notify  => Class['perun::service'],
   }
