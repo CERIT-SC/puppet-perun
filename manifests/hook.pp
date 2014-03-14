@@ -10,14 +10,26 @@ define perun::hook (
     fail("Invalid type: ${type}")
   }
 
-  $_ensure = $ensure ? {
+  # ensure directory with service hooks
+  $_ensure_d = $ensure ? {
+    latest  => directory,
+    present => directory,
+    default => $ensure,
+  }
+
+  file { "${perun::params::perun_dir}/${service}.d":
+    ensure => $_ensure_d,
+  }
+
+  # ensure hook
+  $_ensure_f = $ensure ? {
     latest  => file,
     present => file,
     default => $ensure,
   }
 
   file { "${perun::params::perun_dir}/${service}.d/${type}_${hookname}":
-    ensure  => $_ensure,
+    ensure  => $_ensure_f,
     content => "# This file is managed by Puppet!
 ${content}",
     require => Class['perun::install'],
