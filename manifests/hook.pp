@@ -11,14 +11,16 @@ define perun::hook (
   }
 
   # ensure directory with service hooks
-  $_ensure_d = $ensure ? {
-    latest  => directory,
-    present => directory,
-    default => $ensure,
-  }
+  if ! defined(File["${perun::params::perun_dir}/${service}.d"]) {
+    $_ensure_d = $ensure ? {
+      latest  => directory,
+      present => directory,
+      default => $ensure,
+    }
 
-  file { "${perun::params::perun_dir}/${service}.d":
-    ensure => $_ensure_d,
+    file { "${perun::params::perun_dir}/${service}.d":
+      ensure => $_ensure_d,
+    }
   }
 
   # ensure hook
