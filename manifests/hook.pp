@@ -19,7 +19,8 @@ define perun::hook (
     }
 
     file { "${perun::params::perun_dir}/${service}.d":
-      ensure => $_ensure_d,
+      ensure  => $_ensure_d,
+      require => Class['perun::install'],
     }
   }
 
