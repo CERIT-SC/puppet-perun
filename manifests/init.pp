@@ -7,7 +7,8 @@ class perun (
   $packages       = $perun::params::packages,
   $service        = $perun::params::service,
   $use_repo       = $perun::params::use_repo,
-  $own_repo_class = $perun::params::own_repo_class
+  $own_repo_class = $perun::params::own_repo_class,
+  $require_class  = $perun::params::require_class
 ) inherits perun::params {
 
   if ! ($ensure in [present,absent,latest]) {
@@ -15,8 +16,13 @@ class perun (
   }
 
   validate_string($user, $allow_from, $ssh_key, $ssh_type)
+  validate_string($own_repo_class, $require_class)
   validate_array($packages)
   validate_bool($use_repo)
+
+  if $require_class != '' {
+    require($require_class)
+  }
 
   class { 'perun::config':
     ensure     => $ensure,

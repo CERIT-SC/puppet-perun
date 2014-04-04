@@ -6,6 +6,7 @@ class perun::params {
   $ensure = latest
   $use_repo = true
   $own_repo_class = ''
+  $require_class = ''
   $perun_dir = '/opt/perun/bin'
 
   case $::operatingsystem {

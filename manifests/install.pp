@@ -5,7 +5,7 @@ class perun::install (
   $own_repo_class,
 ) {
   if $own_repo_class != '' {
-    require "${own_repo_class}"
+    require($own_repo_class)
 
   } elsif ($use_repo == true) {
     case $::operatingsystem {
