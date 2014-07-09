@@ -54,7 +54,6 @@ Full configuration options:
 
 ```puppet
 perun::conf { 'name':
-  ensure     => present|absent,              # ensure state
   order      => number,                      # location in file
   content    => '...',                       # configuration script
   perun_conf => '...',                       # configuration file
@@ -65,7 +64,6 @@ Example:
 
 ```puppet
 perun::conf { 'service_blacklist':
-  ensure  => present,
   content => 'SERVICE_BLACKLIST=(passwd)',
 }
 ```
