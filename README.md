@@ -95,3 +95,7 @@ perun::hook { 'passwd_mail':
   content => 'echo | mail -s "Perun done on passwd" root',
 }
 ```
+
+***
+
+CERIT Scientific Cloud, <support@cerit-sc.cz>
