@@ -4,6 +4,7 @@ class perun (
   $allow_from     = $perun::params::allow_from,
   $ssh_key        = $perun::params::ssh_key,
   $ssh_type       = $perun::params::ssh_type,
+  $perun_conf     = $perun::params::perun_conf,
   $packages       = $perun::params::packages,
   $service        = $perun::params::service,
   $use_repo       = $perun::params::use_repo,
@@ -20,6 +21,10 @@ class perun (
   validate_array($packages)
   validate_bool($use_repo)
 
+  if $perun_conf != '' {
+    validate_absolute_path($perun_conf)
+  }
+
   if $require_class != '' {
     require($require_class)
   }
@@ -30,6 +35,7 @@ class perun (
     allow_from => $allow_from,
     ssh_key    => $ssh_key,
     ssh_type   => $ssh_type,
+    perun_conf => $perun_conf,
   }
 
   class { 'perun::install':

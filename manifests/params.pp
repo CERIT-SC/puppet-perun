@@ -8,6 +8,8 @@ class perun::params {
   $own_repo_class = ''
   $require_class = ''
   $perun_dir = '/opt/perun/bin'
+  $perun_conf = '/etc/perunv3.conf'
+  $conf_append = true
 
   case $::operatingsystem {
     debian: {
