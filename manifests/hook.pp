@@ -3,7 +3,7 @@ define perun::hook (
   $type,
   $content,
   $hookname  = $title,
-  $ensure    = $perun::params::ensure,
+  $ensure    = $perun::ensure,
   $perun_dir = $perun::params::perun_dir
 ) {
   if ! ($type in ['pre','post','mid']) {

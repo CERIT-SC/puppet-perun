@@ -43,3 +43,57 @@ class { 'perun':
   require_class  => '...',                   # custom required class
 }
 ```
+
+### Configuration override
+
+Some configuration can be sourced from `/etc` (typically
+`/etc/perunv3.conf`). Definition `perun::conf` allows
+to specify these changes in form of shell script snippets.
+
+Full configuration options:
+
+```puppet
+perun::conf { 'name':
+  ensure     => present|absent,              # ensure state
+  order      => number,                      # location in file
+  content    => '...',                       # configuration script
+  perun_conf => '...',                       # configuration file
+}
+```
+
+Example:
+
+```puppet
+perun::conf { 'service_blacklist':
+  ensure  => present,
+  content => 'SERVICE_BLACKLIST=(passwd)',
+}
+```
+
+### Hooks
+
+Hooks are executed before, during or after particular
+service propagation. Hook content is a shell script.
+
+Full configuration options:
+
+```puppet
+perun::hook { 'hook_name':
+  ensure    => present|absent,               # ensure state
+  service   => '...',                        # Perun service name
+  type      => 'pre' or 'post' or 'mid',     # execution time
+  content   => '...',                        # commands to run
+  perun_dir => '...',                        # parent directory of hooks
+}
+```
+
+Example:
+
+```puppet
+perun::hook { 'passwd_mail':
+  ensure  => present,
+  service => 'passwd',
+  type    => 'post',
+  content => 'echo | mail -s "Perun done on passwd" root',
+}
+```
