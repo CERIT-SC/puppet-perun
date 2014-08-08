@@ -1,6 +1,6 @@
 {
   "name": "ceritsc-perun",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": "ceritsc",
   "summary": "Perun slave scripts setup",
   "license": "MIT",
@@ -9,6 +9,36 @@
   "issues_url": "https://github.com/CERIT-SC/puppet-perun/issues",
   "tags": [
     "perun"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemmajrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "11.2",
+        "11.3"
+      ]
+    }
   ],
   "requirements": [
     {
