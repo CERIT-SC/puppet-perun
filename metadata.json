@@ -1,6 +1,6 @@
 {
   "name": "ceritsc-perun",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "author": "ceritsc",
   "summary": "Perun slave scripts setup",
   "license": "MIT",
@@ -52,11 +52,11 @@
   ],
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
+      "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.0.0"
     },
     {
-      "name": "ceritsc-yum",
+      "name": "ceritsc/yum",
       "version_requirement": ">= 0.9.0"
     }
   ]
