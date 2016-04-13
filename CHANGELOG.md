@@ -1,3 +1,12 @@
+## 2016-04-13 - Release 0.9.4
+
+Don't delete directory for service hooks.
+
+#### Bugfixes
+
+- Don't delete directory for service hooks,
+  we don't know if it's empty.
+
 ## 2014-12-08 - Release 0.9.3
 
 Fix file/directory permissions.
