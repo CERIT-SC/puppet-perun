@@ -18,8 +18,8 @@ define perun::hook (
   }
 
   # create directory for service hooks
-  if ($_ensure_f == file) and
-    (! defined(File["${perun::params::perun_dir}/${service}.d"])
+  if (($_ensure_f == file) and
+    (! defined(File["${perun::params::perun_dir}/${service}.d"])))
   {
     file { "${perun::params::perun_dir}/${service}.d":
       ensure  => directory,
