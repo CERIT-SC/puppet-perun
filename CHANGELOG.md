@@ -1,4 +1,4 @@
-## 2016-04-13 - Release 0.9.4
+## 2016-04-13 - Release 0.9.5
 
 Don't delete directory for service hooks.
 
