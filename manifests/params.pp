@@ -21,7 +21,7 @@ class perun::params {
     }
 
     redhat,centos: {
-      $packages = ['perun-slave']
+      $packages = ['perun-slave-base', 'perun-slave-process-group', 'perun-slave-process-passwd']
       $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perunv3'
