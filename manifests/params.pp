@@ -17,13 +17,6 @@ class perun::params {
                         
   $packages_extra = []
 
-  if $perun_standard == true {
-    $packages = concat($packages_base,$packages_standard,$packages_extra)
-  }
-  else {
-    $packages = concat($packages_base,$packages_extra)
-  }
-
   case $::operatingsystem {
     debian: {
       $service = 'perun_propagate'
