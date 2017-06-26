@@ -21,7 +21,7 @@ class perun (
 
   validate_string($user, $allow_from, $ssh_key, $ssh_type)
   validate_string($own_repo_class, $require_class)
-  validate_array($packages)
+  validate_array($packages_base, $packages_standard, $packages_extra)
   validate_bool($use_repo)
 
   if $perun_conf != '' {
