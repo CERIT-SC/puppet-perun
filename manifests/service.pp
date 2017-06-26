@@ -1,8 +1,7 @@
 class perun::service (
-  $service
 ) {
-  if $service {
-    service { $service:
+  if $perun::service {
+    service { $perun::service:
       enable => true,
     }
   }
