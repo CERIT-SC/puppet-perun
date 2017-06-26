@@ -31,29 +31,11 @@ class perun (
     require($require_class)
   }
 
-  class { 'perun::config':
-    ensure     => $ensure,
-    user       => $user,
-    allow_from => $allow_from,
-    ssh_key    => $ssh_key,
-    ssh_type   => $ssh_type,
-    perun_conf => $perun_conf,
-  }
+  contain perun::config
+  contain perun::install
+  contain perun::service
 
-  class { 'perun::install':
-    ensure         => $ensure,
-    packages       => delete_undef_values(flatten($packages_base,$packages_standard,$packages_extra)),
-    use_repo       => $use_repo,
-    own_repo_class => $own_repo_class,
-  }
-
-  class { 'perun::service':
-    service => $service,
-  }
-
-  anchor { 'perun::begin': ; }
-    -> Class['perun::config']
+  Class['perun::config']
     -> Class['perun::install']
     ~> Class['perun::service']
-    -> anchor { 'perun::end': ; }
 }
