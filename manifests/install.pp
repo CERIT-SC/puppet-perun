@@ -1,13 +1,9 @@
 class perun::install (
-  $ensure,
-  $packages,
-  $use_repo,
-  $own_repo_class,
 ) {
-  if $own_repo_class != '' {
-    require($own_repo_class)
+  if ! empty($perun::own_repo_class) {
+    require($perun::own_repo_class)
 
-  } elsif ($use_repo == true) {
+  } elsif ($perun::use_repo == true) {
     case $::operatingsystem {
       debian:        { require perun::repo::apt }
       redhat,centos: { require perun::repo::yum }
@@ -16,9 +12,11 @@ class perun::install (
     }
   }
 
-  if size($packages)>0 {
-    package { $packages:
-      ensure => $ensure,
+  $_packages = delete_undef_values(flatten($perun::packages_base,$perun::packages_standard,$perun::packages_extra))
+
+  if size($_packages)>0 {
+    package { $_packages:
+      ensure => $perun::ensure,
     }
   } else {
     warning('No Perun package(s) for installation')
