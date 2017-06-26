@@ -5,7 +5,6 @@ class perun (
   $ssh_key           = $perun::params::ssh_key,
   $ssh_type          = $perun::params::ssh_type,
   $perun_conf        = $perun::params::perun_conf,
-  $perun_standard    = $perun::params::perun_standard,
   $packages_base     = $perun::params::packages_base,
   $packages_standard = $perun::params::packages_standard,
   $packages_extra    = $perun::params::packages_extra,
@@ -41,16 +40,9 @@ class perun (
     perun_conf => $perun_conf,
   }
 
-  if $perun_standard == true {
-    $_packages = concat($packages_base,$packages_standard,$packages_extra)
-  }
-  else {
-    $_packages = concat($packages_base,$packages_extra)
-  }
-
   class { 'perun::install':
     ensure         => $ensure,
-    packages       => $_packages,
+    packages       => delete_undef_values(flatten($packages_base,$packages_standard,$packages_extra)),
     use_repo       => $use_repo,
     own_repo_class => $own_repo_class,
   }

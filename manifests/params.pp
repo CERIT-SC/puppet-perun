@@ -10,7 +10,6 @@ class perun::params {
   $perun_dir = '/opt/perun/bin'
   $perun_conf = '/etc/perunv3.conf'
   $conf_append = true
-  $perun_standard = true
   $packages_base = ['perun-slave-base','perun-slave-process-k5login-root']
   $packages_standard = ['perun-slave-process-group','perun-slave-process-passwd',
                         'perun-slave-process-mailaliases','perun-slave-process-mailaliases-generic']
