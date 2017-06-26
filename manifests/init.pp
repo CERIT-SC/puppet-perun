@@ -24,11 +24,11 @@ class perun (
   validate_array($packages_base, $packages_standard, $packages_extra)
   validate_bool($use_repo)
 
-  if $perun_conf != '' {
+  if ! empty($perun_conf) {
     validate_absolute_path($perun_conf)
   }
 
-  if $require_class != '' {
+  if ! empty($require_class) {
     require($require_class)
   }
 
