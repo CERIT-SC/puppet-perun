@@ -16,6 +16,9 @@ class perun (
   $repos             = $perun::params::apt_repos,
   $pin               = $perun::params::apt_pin,
   $gpgkey            = $perun::params::gpgkey,
+  $conf_append       = $perun::params::conf_append,
+  $perun_dir         = $perun::params::perun_dir,
+  $aliases,
 ) inherits perun::params {
 
   if ! ($ensure in [present,absent,latest]) {
@@ -26,6 +29,7 @@ class perun (
   validate_string($own_repo_class, $require_class)
   validate_array($packages_base, $packages_standard, $packages_extra)
   validate_bool($use_repo)
+  validate_bool($conf_append)
 
   if ! empty($perun_conf) {
     validate_absolute_path($perun_conf)

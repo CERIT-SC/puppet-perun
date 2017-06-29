@@ -1,16 +1,12 @@
-class perun::conf::dns_alias_whitelist (
-  $aliases,
-  $append  = $perun::params::conf_append
-) inherits perun::params {
-
-  validate_bool($append)
-
-  if is_array($aliases) {
-    $_aliases = $aliases
-  } elsif is_string($aliases) {
-    $_aliases = [$aliases]
-  } else {
-    fail('$aliases should be array or string')
+class perun::conf::dns_alias_whitelist {
+  if is_array($perun::aliases) {
+    $_aliases = $perun::aliases
+  }
+  elsif is_string($perun::aliases) {
+    $_aliases = [$perun::aliases]
+  }
+  else {
+    fail('$perun::aliases should be array or string')
   }
 
   # replace ' -> '\'' and
@@ -27,7 +23,7 @@ class perun::conf::dns_alias_whitelist (
       ' '
     )
 
-  $_op = $append ? {
+  $_op = $perun::conf_append ? {
     true    => '+=',
     default => '='
   }
