@@ -1,6 +1,4 @@
-class perun::repo::apt (
-) {
-
+class perun::repo::apt {
   $_ensure = $perun::ensure ? {
     latest  => present,
     default => $perun::ensure

@@ -1,6 +1,4 @@
-class perun::repo::zypp (
-) {
-
+class perun::repo::zypp {
   $_ensure = $perun::ensure ? {
     latest  => present,
     default => $perun::ensure

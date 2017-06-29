@@ -1,6 +1,4 @@
-class perun::repo::yum (
-) {
-
+class perun::repo::yum {
   $_ensure = $perun::ensure ? {
     latest  => present,
     default => $perun::ensure

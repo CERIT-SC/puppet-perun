@@ -1,9 +1,9 @@
-class perun::install (
-) {
+class perun::install {
   if ! empty($perun::own_repo_class) {
     require($perun::own_repo_class)
 
-  } elsif ($perun::use_repo == true) {
+  }
+  elsif ($perun::use_repo == true) {
     case $::operatingsystem {
       debian:        { require perun::repo::apt }
       redhat,centos: { require perun::repo::yum }
@@ -18,7 +18,8 @@ class perun::install (
     package { $_packages:
       ensure => $perun::ensure,
     }
-  } else {
+  }
+  else {
     warning('No Perun package(s) for installation')
   }
 }

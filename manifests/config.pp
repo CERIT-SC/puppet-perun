@@ -1,5 +1,4 @@
-class perun::config (
-) {
+class perun::config {
   $_ensure = $perun::ensure ? {
     latest    => present,
     default   => $ensure
