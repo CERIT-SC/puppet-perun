@@ -1,13 +1,9 @@
 class perun::repo::apt (
-  $ensure  = $perun::params::ensure,
-  $baseurl = $perun::params::baseurl,
-  $repos   = $perun::params::apt_repos,
-  $pin     = $perun::params::apt_pin,
-) inherits perun::params {
+) {
 
-  $_ensure = $ensure ? {
+  $_ensure = $perun::ensure ? {
     latest  => present,
-    default => $ensure
+    default => $perun::ensure
   }
 
   apt::key { 'meta':
@@ -18,8 +14,8 @@ class perun::repo::apt (
 
   Apt::Source {
     ensure      => $_ensure,
-    location    => $baseurl,
-    repos       => $repos,
+    location    => $perun::baseurl,
+    repos       => $perun::repos,
     include_src => false,
     require     => Apt::Key['meta'],
   }
@@ -36,7 +32,7 @@ class perun::repo::apt (
     apt::pin { 'meta_depot':
       ensure     => $_ensure,
       originator => 'meta@cesnet.cz,a=stable',
-      priority   => $pin,
+      priority   => $perun::pin,
     }
   }
 }

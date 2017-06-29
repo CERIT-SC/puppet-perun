@@ -11,7 +11,10 @@ class perun (
   $service           = $perun::params::service,
   $use_repo          = $perun::params::use_repo,
   $own_repo_class    = $perun::params::own_repo_class,
-  $require_class     = $perun::params::require_class
+  $require_class     = $perun::params::require_class,
+  $baseurl           = $perun::params::baseurl,
+  $repos             = $perun::params::apt_repos,
+  $pin               = $perun::params::apt_pin,
 ) inherits perun::params {
 
   if ! ($ensure in [present,absent,latest]) {
