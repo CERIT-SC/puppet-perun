@@ -31,7 +31,10 @@ class perun (
   validate_bool($use_repo)
   validate_bool($conf_append)
   validate_absolute_path($perun_dir)
-  validate_integer($pin)
+  
+  if $pin != undef {
+    validate_integer($pin)
+  }
 
   if ! empty($perun_conf) {
     validate_absolute_path($perun_conf)
