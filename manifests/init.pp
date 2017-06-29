@@ -27,9 +27,12 @@ class perun (
 
   validate_string($user, $allow_from, $ssh_key, $ssh_type)
   validate_string($own_repo_class, $require_class)
+  validate_string($baseurl, $gpgkey, $repos)
   validate_array($packages_base, $packages_standard, $packages_extra)
   validate_bool($use_repo)
   validate_bool($conf_append)
+  validate_absolute_path($perun_dir)
+  validate_integer($pin)
 
   if ! empty($perun_conf) {
     validate_absolute_path($perun_conf)
