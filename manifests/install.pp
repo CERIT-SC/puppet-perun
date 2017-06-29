@@ -12,7 +12,11 @@ class perun::install {
     }
   }
 
-  $_packages = delete_undef_values(flatten($perun::packages_base,$perun::packages_standard,$perun::packages_extra))
+  $_packages = delete_undef_values(flatten([
+    $perun::packages_base,
+    $perun::packages_standard,
+    $perun::packages_extra
+  ]))
 
   if size($_packages)>0 {
     package { $_packages:
