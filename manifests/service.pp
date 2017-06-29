@@ -1,7 +1,5 @@
 class perun::service {
-  if ((! empty($perun::service)) and
-    ($perun::service != undef))
-  {
+  if ! empty($perun::service) {
     service { $perun::service:
       enable => true,
     }
