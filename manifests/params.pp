@@ -15,23 +15,21 @@ class perun::params {
                         'perun-slave-process-mailaliases','perun-slave-process-mailaliases-generic']
                         
   $packages_extra = []
+  $service = undef
 
   case $::operatingsystem {
     debian: {
-      $service = 'perun_propagate'
       $baseurl = 'ftp://depot1.mc.cesnet.cz/'
       $apt_repos = 'main'
       $apt_pin = 490
     }
 
     redhat,centos: {
-      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perunv3'
     }
 
     sles,sled: {
-      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/RPM-GPG-KEY-perunv3'
     }
