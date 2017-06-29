@@ -1,12 +1,14 @@
-class perun::conf::dns_alias_whitelist {
-  if is_array($perun::aliases) {
-    $_aliases = $perun::aliases
+class perun::conf::dns_alias_whitelist (
+  $aliases,
+) {
+  if is_array($aliases) {
+    $_aliases = $aliases
   }
-  elsif is_string($perun::aliases) {
-    $_aliases = [$perun::aliases]
+  elsif is_string($aliases) {
+    $_aliases = [$aliases]
   }
   else {
-    fail('$perun::aliases should be array or string')
+    fail('$aliases should be array or string')
   }
 
   # replace ' -> '\'' and

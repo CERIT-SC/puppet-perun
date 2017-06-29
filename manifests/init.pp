@@ -18,7 +18,6 @@ class perun (
   $gpgkey            = $perun::params::gpgkey,
   $conf_append       = $perun::params::conf_append,
   $perun_dir         = $perun::params::perun_dir,
-  $aliases,
 ) inherits perun::params {
 
   if ! ($ensure in [present,absent,latest]) {
