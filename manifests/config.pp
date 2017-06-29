@@ -20,7 +20,7 @@ class perun::config {
     ],
   }
 
-  if $perun::perun_conf {
+  if ! empty($perun::perun_conf) {
     concat { $perun::perun_conf:
       ensure => $_ensure,
       mode   => '0644',
