@@ -15,6 +15,7 @@ class perun (
   $baseurl           = $perun::params::baseurl,
   $repos             = $perun::params::apt_repos,
   $pin               = $perun::params::apt_pin,
+  $gpgkey            = $perun::params::gpgkey,
 ) inherits perun::params {
 
   if ! ($ensure in [present,absent,latest]) {
