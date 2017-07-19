@@ -19,7 +19,7 @@ class perun::params {
 
   case $::operatingsystem {
     debian: {
-      $baseurl = 'ftp://depot1.mc.cesnet.cz/'
+      $baseurl = 'ftp://repo.metacentrum.cz/'
       $apt_repos = 'main'
       $apt_pin = 490
     }
