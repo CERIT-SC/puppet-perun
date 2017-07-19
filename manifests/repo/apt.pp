@@ -18,16 +18,16 @@ class perun::repo::apt {
     require     => Apt::Key['meta'],
   }
 
-  apt::source { 'meta_depot_all':
+  apt::source { 'meta_repo_all':
     release => 'all',
   }
 
-  apt::source { 'meta_depot':
+  apt::source { 'meta_repo':
     release => $::lsbdistcodename,
   }
 
   if $pin != false {
-    apt::pin { 'meta_depot':
+    apt::pin { 'meta_repo':
       ensure     => $_ensure,
       originator => 'meta@cesnet.cz,a=stable',
       priority   => $perun::pin,
