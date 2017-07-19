@@ -6,7 +6,7 @@ class perun::repo::apt {
 
   apt::key { 'meta':
     ensure      => $_ensure,
-    key         => 'C3C8B519',
+    key         => 'F11383F552848522E4EACA443573FD94A385CDB0',
     key_content => template('perun/meta.gpg.erb'),
   }
 
