@@ -1,3 +1,7 @@
+## 2017-07-20 - Release 0.9.6
+
+Modernize module, updates for new Perun packages.
+
 ## 2016-04-13 - Release 0.9.5
 
 Don't delete directory for service hooks.
