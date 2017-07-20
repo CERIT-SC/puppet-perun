@@ -1,6 +1,6 @@
 {
   "name": "ceritsc-perun",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "author": "ceritsc",
   "summary": "Perun slave scripts setup",
   "license": "MIT",
@@ -8,9 +8,16 @@
   "project_page": "https://github.com/CERIT-SC/puppet-perun",
   "issues_url": "https://github.com/CERIT-SC/puppet-perun/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 4.0.0"},
-    {"name":"ceritsc/yum","version_requirement":">= 0.9.0"}
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0"
+    },
+    {
+      "name": "ceritsc/yum",
+      "version_requirement": ">= 0.9.0"
+    }
   ],
+  "data_provider": null,
   "tags": [
     "perun"
   ],
@@ -34,7 +41,8 @@
       "operatingsystemrelease": [
         "6",
         "7",
-        "8"
+        "8",
+        "9"
       ]
     },
     {
