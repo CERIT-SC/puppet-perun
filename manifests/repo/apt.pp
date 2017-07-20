@@ -16,6 +16,7 @@ class perun::repo::apt {
     repos       => $perun::repos,
     include_src => false,
     require     => Apt::Key['meta'],
+    notify      => Exec['perun_apt_update'],
   }
 
   apt::source { 'meta_repo_all':
@@ -32,5 +33,10 @@ class perun::repo::apt {
       originator => 'meta@cesnet.cz,a=stable',
       priority   => $perun::pin,
     }
+  }
+
+  exec { 'perun_apt_update':
+    command     => "/usr/bin/apt-get update",
+    refreshonly => true,
   }
 }
