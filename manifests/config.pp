@@ -1,23 +1,16 @@
-class perun::config (
-  $ensure,
-  $user,
-  $allow_from,
-  $ssh_key,
-  $ssh_type,
-  $perun_conf
-) {
-  $_ensure = $ensure ? {
+class perun::config {
+  $_ensure = $perun::ensure ? {
     latest    => present,
     default   => $ensure
   }
 
   ssh_authorized_key { 'perunv3':
     ensure  => $_ensure,
-    key     => $ssh_key,
-    type    => $ssh_type,
-    user    => $user,
+    key     => $perun::ssh_key,
+    type    => $perun::ssh_type,
+    user    => $perun::user,
     options => [
-      "from=\"${allow_from}\"",
+      "from=\"${perun::allow_from}\"",
       'command="/opt/perun/bin/perun"',
       'no-pty',
       'no-X11-forwarding',
@@ -27,14 +20,14 @@ class perun::config (
     ],
   }
 
-  if $perun_conf {
-    concat { $perun_conf:
+  if ! empty($perun::perun_conf) {
+    concat { $perun::perun_conf:
       ensure => $_ensure,
       mode   => '0644',
     }
 
     perun::conf { 'header':
-      perun_conf => $perun_conf,
+      perun_conf => $perun::perun_conf,
       order      => 0,
       content    => '# This file is managed by Puppet!',
     }

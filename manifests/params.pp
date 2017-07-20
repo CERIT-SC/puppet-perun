@@ -10,26 +10,26 @@ class perun::params {
   $perun_dir = '/opt/perun/bin'
   $perun_conf = '/etc/perunv3.conf'
   $conf_append = true
+  $packages_base = ['perun-slave-base','perun-slave-process-k5login-root']
+  $packages_standard = ['perun-slave-process-group','perun-slave-process-passwd',
+                        'perun-slave-process-mailaliases','perun-slave-process-mailaliases-generic']
+                        
+  $packages_extra = []
+  $service = undef
 
   case $::operatingsystem {
     debian: {
-      $packages = ['remctl-client','perun-slave','perun-slave-meta']
-      $service = 'perun_propagate'
-      $baseurl = 'ftp://depot1.mc.cesnet.cz/'
+      $baseurl = 'ftp://repo.metacentrum.cz/'
       $apt_repos = 'main'
       $apt_pin = 490
     }
 
     redhat,centos: {
-      $packages = ['perun-slave-base', 'perun-slave-process-group', 'perun-slave-process-passwd']
-      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-perunv3'
     }
 
     sles,sled: {
-      $packages = ['perun-slave']
-      $service = undef
       $baseurl = 'https://homeproj.cesnet.cz/rpm/perunv3/stable/noarch'
       $gpgkey = '/etc/pki/RPM-GPG-KEY-perunv3'
     }
