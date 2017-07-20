@@ -8,6 +8,7 @@ class perun::repo::apt {
     ensure      => $_ensure,
     key         => 'F11383F552848522E4EACA443573FD94A385CDB0',
     key_content => template('perun/meta.gpg.erb'),
+    notify      => Exec['perun_apt_update'],
   }
 
   Apt::Source {
