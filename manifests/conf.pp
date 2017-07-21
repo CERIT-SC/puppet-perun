@@ -3,8 +3,9 @@ define perun::conf (
   $order      = 10,
   $perun_conf = $perun::perun_conf,
 ) {
-  validate_string($content, $order)
+  validate_string($content)
   validate_absolute_path($perun_conf)
+  validate_re("${order}", '^\d+$')
 
   concat::fragment { "perun::conf-${name}":
     target  => $perun_conf,
