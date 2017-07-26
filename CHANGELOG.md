@@ -1,3 +1,7 @@
+## 2017-07-26 - Release 0.9.7
+
+- Puppet5 ready, validate integer by re
+
 ## 2017-07-20 - Release 0.9.6
 
 Modernize module, updates for new Perun packages.
