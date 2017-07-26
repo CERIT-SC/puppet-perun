@@ -1,3 +1,7 @@
+## 2017-07-26 - Release 0.9.8
+
+- Added a default base package: perun-propagate
+
 ## 2017-07-26 - Release 0.9.7
 
 - Puppet5 ready, validate integer by re
